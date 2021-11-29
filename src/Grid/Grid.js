@@ -4,8 +4,8 @@ import Node from "../Node/Node.js";
 import { dfs } from "../Algorithims/depthFirstSearch.js";
 import { bfs } from "../Algorithims/breadthFirstSearch.js";
 
-const NUM_ROWS = 10;
-const NUM_COLS = 10;
+const NUM_ROWS = 30;
+const NUM_COLS = 30;
 const START_ROW = 0;
 const START_COL = 0;
 const DEST_ROW = NUM_ROWS - 1;
@@ -37,6 +37,8 @@ const Grid = () => {
         document.getElementById(`${row}-${col}`).className = "node visited";
       }, 35 * i);
     }
+
+    console.log("nodes traveled", list.length);
   };
 
   const handleBFS = () => {
@@ -75,17 +77,14 @@ const Grid = () => {
     }
     setGridState(newGrid);
   };
-  const handleMouseOver = (row, col) => {
-    setGridState(setHighlightNode(gridState, row, col));
-  };
-  const handleMouseOut = (row, col) => {
-    setGridState(unhighlight(gridState, row, col));
-  };
+
   const handleMouseDown = (row, col) => {
     setMousePressed(true);
     const setWallGrid = setWall(gridState, row, col);
     if (setWallGrid !== null) {
-      setGridState(setWallGrid);
+      setTimeout(() => {
+        setGridState(setWallGrid);
+      }, 100);
     }
   };
 
@@ -93,7 +92,9 @@ const Grid = () => {
     if (!mouseIsPressed) return;
     const setWallGrid = setWall(gridState, row, col);
     if (setWallGrid !== null) {
-      setGridState(setWallGrid);
+      setTimeout(() => {
+        setGridState(setWallGrid);
+      }, 100);
     }
   };
 
@@ -130,15 +131,8 @@ const Grid = () => {
             return (
               <div key={rowIdx}>
                 {row.map((node, nodeIdx) => {
-                  const {
-                    row,
-                    col,
-                    isStart,
-                    isFinish,
-                    isWall,
-                    isVisited,
-                    isHovered,
-                  } = node;
+                  const { row, col, isStart, isFinish, isWall, isVisited } =
+                    node;
                   return (
                     <Node
                       key={nodeIdx}
@@ -148,10 +142,7 @@ const Grid = () => {
                       isFinish={isFinish}
                       isWall={isWall}
                       isVisited={isVisited}
-                      isHovered={isHovered}
                       mouseIsPressed={mouseIsPressed}
-                      onMouseOver={() => handleMouseOver(row, col)}
-                      onMouseOut={() => handleMouseOut(row, col)}
                       onMouseDown={() => handleMouseDown(row, col)}
                       onMouseEnter={() => handleMouseEnter(row, col)}
                       onMouseUp={() => handleMouseUp()}
@@ -192,29 +183,12 @@ const createNode = (row, col) => {
 };
 
 const setWall = (grid, row, col) => {
-  const newGrid = grid.slice();
+  const newGrid = [...grid];
   const node = newGrid[row][col];
   //newGrid[row][col] = { ...node, isWall: false };
   if (node.isVisited) return null;
-  const newNode = {
-    ...node,
-    isWall: !node.isWall,
-  };
-  newGrid[row][col] = newNode;
-  return newGrid;
-};
 
-const setHighlightNode = (grid, row, col) => {
-  const newGrid = grid.slice();
-  const node = newGrid[row][col];
-  newGrid[row][col] = { ...node, isHovered: true };
-  return newGrid;
-};
-
-const unhighlight = (grid, row, col) => {
-  const newGrid = grid.slice();
-  const node = newGrid[row][col];
-  newGrid[row][col] = { ...node, isHovered: false };
+  newGrid[row][col] = { ...node, isWall: !node.isWall };
   return newGrid;
 };
 

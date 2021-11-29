@@ -9,9 +9,6 @@ const Node = (props) => {
     isFinish,
     isVisited,
     isWall,
-    isHovered,
-    onMouseOver,
-    onMouseOut,
     onMouseDown,
     onMouseEnter,
     onMouseUp,
@@ -24,20 +21,12 @@ const Node = (props) => {
     ? "wall"
     : isVisited
     ? "visited"
-    : isHovered
-    ? "hovered"
-    : "";
+    : "unvisited";
   return (
     <>
       <div
         className={`node ${className}`}
         id={`${row}-${col}`}
-        onMouseOver={() => {
-          onMouseOver(row, col);
-        }}
-        onMouseOut={() => {
-          onMouseOut(row, col);
-        }}
         onMouseDown={() => {
           onMouseDown(row, col);
         }}
