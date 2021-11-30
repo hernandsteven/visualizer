@@ -4,8 +4,8 @@ import Node from "../Node/Node.js";
 import { dfs } from "../Algorithims/depthFirstSearch.js";
 import { bfs } from "../Algorithims/breadthFirstSearch.js";
 
-const NUM_ROWS = 10;
-const NUM_COLS = 30;
+const NUM_ROWS = 25;
+const NUM_COLS = 18;
 const START_ROW = 0;
 const START_COL = 0;
 const DEST_ROW = 0;
@@ -35,7 +35,7 @@ const Grid = () => {
         const [row, col] = list[i];
 
         document.getElementById(`${row}-${col}`).className = "node visited";
-      }, 20 * i);
+      }, 30 * i);
     }
 
     console.log("nodes traveled", list.length);
@@ -80,7 +80,9 @@ const Grid = () => {
 
   const handleMouseDown = (row, col) => {
     setMousePressed(true);
+
     const setWallGrid = setWall(gridState, row, col);
+
     if (setWallGrid !== null) {
       setTimeout(() => {
         setGridState(setWallGrid);
@@ -129,7 +131,7 @@ const Grid = () => {
         <div className="grid">
           {gridState.map((row, rowIdx) => {
             return (
-              <div key={rowIdx}>
+              <div className="row" key={rowIdx}>
                 {row.map((node, nodeIdx) => {
                   const { row, col, isStart, isFinish, isWall, isVisited } =
                     node;
