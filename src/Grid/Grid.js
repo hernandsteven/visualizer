@@ -4,11 +4,11 @@ import Node from "../Node/Node.js";
 import { dfs } from "../Algorithims/depthFirstSearch.js";
 import { bfs } from "../Algorithims/breadthFirstSearch.js";
 
-const NUM_ROWS = 30;
+const NUM_ROWS = 10;
 const NUM_COLS = 30;
 const START_ROW = 0;
 const START_COL = 0;
-const DEST_ROW = NUM_ROWS - 1;
+const DEST_ROW = 0;
 const DEST_COL = NUM_COLS - 1;
 
 const Grid = () => {
@@ -22,7 +22,7 @@ const Grid = () => {
 
   const handleDFS = () => {
     let list = dfs(
-      gridState.slice(),
+      [...gridState],
       START_ROW,
       START_COL,
       NUM_ROWS,
@@ -35,7 +35,7 @@ const Grid = () => {
         const [row, col] = list[i];
 
         document.getElementById(`${row}-${col}`).className = "node visited";
-      }, 35 * i);
+      }, 20 * i);
     }
 
     console.log("nodes traveled", list.length);
@@ -43,7 +43,7 @@ const Grid = () => {
 
   const handleBFS = () => {
     let list = bfs(
-      gridState.slice(),
+      [...gridState],
       START_ROW,
       START_COL,
       NUM_ROWS,
@@ -185,9 +185,7 @@ const createNode = (row, col) => {
 const setWall = (grid, row, col) => {
   const newGrid = [...grid];
   const node = newGrid[row][col];
-  //newGrid[row][col] = { ...node, isWall: false };
   if (node.isVisited) return null;
-
   newGrid[row][col] = { ...node, isWall: !node.isWall };
   return newGrid;
 };
