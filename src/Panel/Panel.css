@@ -2,7 +2,21 @@
   display: flex;
   margin-top: 0;
   height: 10vh;
+  width: 100%;
+  outline: 2px solid aqua;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-button-wrapper {
+  display: flex;
 }
 
 .panel-button {
+  height: 60px;
+  width: 60px;
+  outline: 2px solid aqua;
+  border: none;
+  border-radius: 5%;
+  background-color: inherit;
 }

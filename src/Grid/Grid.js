@@ -6,8 +6,8 @@ import { bfs } from "../Algorithims/breadthFirstSearch.js";
 
 const NUM_ROWS = 25;
 const NUM_COLS = 18;
-const START_ROW = 0;
-const START_COL = 0;
+let START_ROW = 0;
+let START_COL = 0;
 const DEST_ROW = 0;
 const DEST_COL = NUM_COLS - 1;
 
@@ -35,7 +35,7 @@ const Grid = () => {
         const [row, col] = list[i];
 
         document.getElementById(`${row}-${col}`).className = "node visited";
-      }, 30 * i);
+      }, 20 * i);
     }
 
     console.log("nodes traveled", list.length);
@@ -56,22 +56,18 @@ const Grid = () => {
         const [row, col] = list[i];
 
         document.getElementById(`${row}-${col}`).className = "node visited";
-      }, 35 * i);
+      }, 20 * i);
     }
   };
 
   const handleClearWalls = (grid) => {
-    let newGrid = grid.slice();
+    let newGrid = [...grid];
     for (let row = 0; row < NUM_ROWS; row++) {
       for (let col = 0; col < NUM_COLS; col++) {
         let node = grid[row][col];
 
         if (node.isWall) {
-          const newNode = {
-            ...node,
-            isWall: !node.isWall,
-          };
-          newGrid[row][col] = newNode;
+          newGrid[row][col] = { ...node, isWall: !node.isWall };
         }
       }
     }
@@ -79,11 +75,10 @@ const Grid = () => {
   };
 
   const handleMouseDown = (row, col) => {
-    setMousePressed(true);
-
     const setWallGrid = setWall(gridState, row, col);
 
     if (setWallGrid !== null) {
+      setMousePressed(true);
       setTimeout(() => {
         setGridState(setWallGrid);
       }, 100);
@@ -103,7 +98,6 @@ const Grid = () => {
   const handleMouseUp = () => {
     setMousePressed(false);
   };
-
   return (
     <>
       <button
@@ -128,7 +122,7 @@ const Grid = () => {
         CLEAR WALLS
       </button>
       <div className="parent">
-        <div className="grid">
+        <div className="grid" onMouseUp={() => handleMouseUp()}>
           {gridState.map((row, rowIdx) => {
             return (
               <div className="row" key={rowIdx}>
@@ -187,7 +181,7 @@ const createNode = (row, col) => {
 const setWall = (grid, row, col) => {
   const newGrid = [...grid];
   const node = newGrid[row][col];
-  if (node.isVisited) return null;
+  if (node.isVisited || node.isStart || node.isFinish) return null;
   newGrid[row][col] = { ...node, isWall: !node.isWall };
   return newGrid;
 };

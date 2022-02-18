@@ -4,11 +4,8 @@ export const bfs = (grid, row, col, m, n, list) => {
   while (queue.length > 0) {
     const [row, col] = queue.pop();
     const node = grid[row][col];
-    console.log(grid[row][col].isVisited);
 
-    grid[row][col] = { ...node, isVisited: true };
-
-    console.log(row, col);
+    node.isVisited = true;
 
     list.push([row, col]);
 

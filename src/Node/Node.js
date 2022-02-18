@@ -1,18 +1,17 @@
 import React from "react";
 import "./Node.css";
 
-const Node = (props) => {
-  const {
-    row,
-    col,
-    isStart,
-    isFinish,
-    isVisited,
-    isWall,
-    onMouseDown,
-    onMouseEnter,
-    onMouseUp,
-  } = props;
+const Node = ({
+  row,
+  col,
+  isStart,
+  isFinish,
+  isVisited,
+  isWall,
+  onMouseDown,
+  onMouseEnter,
+  onMouseUp,
+}) => {
   const className = isStart
     ? "start"
     : isFinish
