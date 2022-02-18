@@ -5,7 +5,6 @@ import Panel from "./Panel/Panel";
 function App() {
   return (
     <>
-      <Panel />
       <Grid />
     </>
   );
