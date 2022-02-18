@@ -4,8 +4,8 @@ import Node from "../Node/Node.js";
 import { dfs } from "../Algorithims/depthFirstSearch.js";
 import { bfs } from "../Algorithims/breadthFirstSearch.js";
 
-const NUM_ROWS = 25;
-const NUM_COLS = 18;
+const NUM_ROWS = 10;
+const NUM_COLS = 10;
 let START_ROW = 0;
 let START_COL = 0;
 const DEST_ROW = 0;
@@ -29,11 +29,10 @@ const Grid = () => {
       NUM_COLS,
       []
     );
-
+    console.table(list);
     for (let i = 0; i < list.length; i++) {
       setTimeout(() => {
         const [row, col] = list[i];
-
         document.getElementById(`${row}-${col}`).className = "node visited";
       }, 20 * i);
     }
@@ -101,6 +100,8 @@ const Grid = () => {
   return (
     <>
       <button
+        className="button-19"
+        role={"button"}
         onClick={() => {
           handleDFS(gridState);
         }}
@@ -108,13 +109,8 @@ const Grid = () => {
         RUN DFS
       </button>
       <button
-        onClick={() => {
-          handleBFS(gridState);
-        }}
-      >
-        RUN BFS
-      </button>
-      <button
+        className="button-19"
+        role={"button"}
         onClick={() => {
           handleClearWalls(gridState);
         }}

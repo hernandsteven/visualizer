@@ -13,3 +13,70 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+.button-dfs {
+  border: 1px solid black;
+  background-color: grey;
+  border-radius: 0 2px 2px 0;
+  cursor: pointer;
+  height: 40px;
+  width: 64px;
+  margin: 0;
+}
+
+/* CSS */
+.button-19 {
+  background-color: #1899d6;
+  display: flex;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: din-round, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 20px;
+  margin: 2px;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  white-space: nowrap;
+}
+
+.button-19:after {
+  background-clip: padding-box;
+  background-color: #1cb0f6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
