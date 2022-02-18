@@ -99,7 +99,7 @@ const Grid = () => {
   };
 
   const handleReset = () => {
-    setGridState(initGrid(NUM_ROWS, NUM_COLS));
+    window.location.reload();
   };
   return (
     <>
