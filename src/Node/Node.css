@@ -90,11 +90,9 @@
   }
 }
 
-.hovered {
-}
 .unvisited {
   cursor: pointer;
 }
 .unvisited:hover {
-  outline: 3px solid rgb(0, 162, 255);
+  filter: brightness(0.5);
 }
