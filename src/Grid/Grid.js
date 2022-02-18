@@ -29,7 +29,7 @@ const Grid = () => {
       NUM_COLS,
       []
     );
-    console.table(list);
+
     for (let i = 0; i < list.length; i++) {
       setTimeout(() => {
         const [row, col] = list[i];
@@ -37,7 +37,7 @@ const Grid = () => {
       }, 20 * i);
     }
 
-    console.log("nodes traveled", list.length);
+    //console.log("nodes traveled", list.length);
   };
 
   const handleBFS = () => {
@@ -97,11 +97,14 @@ const Grid = () => {
   const handleMouseUp = () => {
     setMousePressed(false);
   };
+
+  const handleReset = () => {
+    setGridState(initGrid(NUM_ROWS, NUM_COLS));
+  };
   return (
     <>
       <button
         className="button-19"
-        role={"button"}
         onClick={() => {
           handleDFS(gridState);
         }}
@@ -110,12 +113,19 @@ const Grid = () => {
       </button>
       <button
         className="button-19"
-        role={"button"}
         onClick={() => {
           handleClearWalls(gridState);
         }}
       >
         CLEAR WALLS
+      </button>
+      <button
+        className="button-19"
+        onClick={() => {
+          handleReset();
+        }}
+      >
+        Reset
       </button>
       <div className="parent">
         <div className="grid" onMouseUp={() => handleMouseUp()}>
