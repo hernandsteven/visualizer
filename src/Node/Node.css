@@ -32,12 +32,12 @@
 
 @keyframes placeWallAnimation {
   0% {
-    transform: scale(0.8);
+    transform: scale(0.9);
     background-color: rgba(142, 236, 245, 0.75);
   }
 
   50% {
-    transform: scale(1.2);
+    transform: scale(1.1);
     background-color: rgba(44, 125, 160, 0.75);
   }
 
@@ -66,19 +66,19 @@
 
 @keyframes visitedAnimation {
   0% {
-    transform: scale(1.3);
+    transform: scale(1);
     transform: rotate(90);
     background-color: rgba(205, 180, 219);
   }
 
   50% {
-    transform: scale(1.2);
+    transform: scale(1);
     transform: rotate(180);
     background-color: rgba(255, 200, 221);
   }
 
   75% {
-    transform: scale(1.1);
+    transform: scale(1);
     transform: rotate(270);
     background-color: rgba(255, 175, 204);
   }

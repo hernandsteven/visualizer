@@ -4,11 +4,11 @@ import Node from "../Node/Node.js";
 import { dfs } from "../Algorithims/depthFirstSearch.js";
 import { bfs } from "../Algorithims/breadthFirstSearch.js";
 
-const NUM_ROWS = 10;
-const NUM_COLS = 10;
+const NUM_ROWS = 9;
+const NUM_COLS = 9;
 let START_ROW = 0;
 let START_COL = 0;
-const DEST_ROW = 0;
+const DEST_ROW = NUM_COLS - 1;
 const DEST_COL = NUM_COLS - 1;
 
 const Grid = () => {
@@ -33,8 +33,9 @@ const Grid = () => {
     for (let i = 0; i < list.length; i++) {
       setTimeout(() => {
         const [row, col] = list[i];
+        console.log(row, col);
         document.getElementById(`${row}-${col}`).className = "node visited";
-      }, 20 * i);
+      }, 40 * i);
     }
 
     //console.log("nodes traveled", list.length);
@@ -53,9 +54,9 @@ const Grid = () => {
     for (let i = 0; i < list.length; i++) {
       setTimeout(() => {
         const [row, col] = list[i];
-
+        console.log(row, col);
         document.getElementById(`${row}-${col}`).className = "node visited";
-      }, 20 * i);
+      }, 40 * i);
     }
   };
 
@@ -110,6 +111,14 @@ const Grid = () => {
         }}
       >
         RUN DFS
+      </button>
+      <button
+        className="button-19"
+        onClick={() => {
+          handleBFS(gridState);
+        }}
+      >
+        RUN BFS
       </button>
       <button
         className="button-19"
