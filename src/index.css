@@ -27,7 +27,7 @@ body {
 /* CSS */
 .button-19 {
   background-color: #1899d6;
-  display: flex;
+  display: inline-block;
   border: solid transparent;
   border-radius: 16px;
   border-width: 0 0 4px;

@@ -1,3 +1,5 @@
+import { isValid } from "../util/isValid";
+
 export const dfs = (grid, row, col, m, n, list) => {
   let stack = [[row, col]];
 
@@ -26,19 +28,4 @@ export const dfs = (grid, row, col, m, n, list) => {
     }
   }
   return list;
-};
-
-const isValid = (grid, row, col, m, n) => {
-  if (
-    row < 0 ||
-    col < 0 ||
-    row >= m ||
-    col >= n ||
-    grid[row][col].isWall ||
-    grid[row][col].isVisited
-  ) {
-    return false;
-  }
-
-  return true;
 };

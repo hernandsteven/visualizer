@@ -4,11 +4,11 @@ import Node from "../Node/Node.js";
 import { dfs } from "../Algorithims/depthFirstSearch.js";
 import { bfs } from "../Algorithims/breadthFirstSearch.js";
 
-const NUM_ROWS = 9;
-const NUM_COLS = 9;
+const NUM_ROWS = 25;
+const NUM_COLS = 20;
 let START_ROW = 0;
 let START_COL = 0;
-const DEST_ROW = NUM_COLS - 1;
+const DEST_ROW = NUM_ROWS - 1;
 const DEST_COL = NUM_COLS - 1;
 
 const Grid = () => {
@@ -102,6 +102,7 @@ const Grid = () => {
   const handleReset = () => {
     window.location.reload();
   };
+
   return (
     <>
       <button
@@ -136,6 +137,7 @@ const Grid = () => {
       >
         Reset
       </button>
+
       <div className="parent">
         <div className="grid" onMouseUp={() => handleMouseUp()}>
           {gridState.map((row, rowIdx) => {
