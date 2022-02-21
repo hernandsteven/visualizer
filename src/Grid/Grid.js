@@ -35,6 +35,7 @@ const Grid = () => {
         const [row, col] = list[i];
         console.log(row, col);
         document.getElementById(`${row}-${col}`).className = "node visited";
+        document.getElementById(`${row}-${col}`).style.outline = "none";
       }, 40 * i);
     }
 
@@ -56,6 +57,7 @@ const Grid = () => {
         const [row, col] = list[i];
         console.log(row, col);
         document.getElementById(`${row}-${col}`).className = "node visited";
+        document.getElementById(`${row}-${col}`).style.outline = "none";
       }, 40 * i);
     }
   };
